@@ -18,11 +18,17 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <nav class="navbar d-flex flex-row-reverse align-items-stretch" style="background-color: #e3f2fd;">
+    <div class="d-flex align-items-center">
+      <%= link_to "My list", root_path, class: "nav-link" %>
+      <%= link_to "New List", new_list_path(List.all), class: "nav-link mx-3" %>
+    </div>
+  </nav>
     <%= yield %>
   </body>
 </html>

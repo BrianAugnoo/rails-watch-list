@@ -1,0 +1,6 @@
+<div class="container">
+  <%= simple_form_for @bookmark, url: list_movie_bookmarks_path(@list, @movie, @bookmark), method: :post do |f|%>
+    <%= f.input :comment, as: :text %>
+    <%= f.button :submit, "valid", class:"btn btn-primary" %>
+  <% end %>
+</div>

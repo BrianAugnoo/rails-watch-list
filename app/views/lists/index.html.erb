@@ -1,0 +1,25 @@
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('cinema.jpg') %>)">
+  Save any Kind of movie
+</div>
+
+<div class="container mt-5">
+  <div class="d-flex mb-3">
+    <h3 class="me-auto">My list</h3>
+    <%= link_to "create a movie list",new_list_path(@lists), class:"btn btn-primary" %>
+  </div>
+
+  <div class="row mb-5 px-3">
+    <% @lists.each do |list| %>
+      <% background_image = list.movies.size.positive? ? "url(#{list.movies[0][:poster_url]})" : "url(#{asset_path('cinema.jpg')})" %>
+
+      <div class="col-4 banner position-relative text-center mx-3" style="background-image: <%= background_image %>; display: flex; align-items: center; justify-content: center;">
+        <h2 class="banner-title"><%= link_to list[:name], list_path(list), class: "white-link" %></h2>
+        <div class="position-absolute" style="bottom: 10px; right: 10px;">
+          <%= button_to "Delete", list,
+            method: :delete,
+            data: { turbo_confirm: "Don't kill me please!" },
+            class: "btn btn-danger btn-sm" %>
+        </div>
+      </div>
+    <% end %>
+  </div>

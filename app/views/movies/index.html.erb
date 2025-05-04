@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <div style="text-align: center;">
+  <h1>All movies</h1>
+  </div>
+
+  <div class="row">
+    <% @movies.each do |movie| %>
+      <div class="col-3 mb-4">
+        <div class="card">
+          <img src="<%= movie[:poster_url] %>" class="card-img-top" alt="movies poster">
+
+          <div class="card-body">
+            <h5 class="card-title"><%= movie[:add_title] %></h5>
+            <p class="card-text"><%= movie[:overview] %></p>
+            <%= link_to "Add", new_list_movie_bookmark_path(@list, movie, @bookmark), class: "btn btn-primary" %>
+          </div>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><%= movie[:rating] %>/10</li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

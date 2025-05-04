@@ -1,0 +1,40 @@
+<% background_image = @list.movies.size.positive? ? "url(#{@list.movies[0][:poster_url]})" : "url(#{asset_path('cinema.jpg')})" %>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), <%= background_image%>">
+  <h1><%= @list[:name]%></h1>
+</div>
+
+<div class="container mt-5">
+  <div class="mb-4">
+    <%= link_to "add movie", list_movies_path(@list, @all_movies), class:"btn btn-primary" %>
+  </div>
+
+  <div class="row mb-5">
+    <% @list.bookmarks.each do |bookmark| %>
+      <% movie = bookmark.movie %>
+
+      <div class="col-3">
+        <div class="card">
+          <img src="<%= movie[:poster_url] %>" class="card-img-top" alt="something">
+
+          <div class="card-body">
+            <h5 class="card-title"><%= movie[:add_title] %></h5>
+            <p class="card-text"><%= bookmark[:comment] %></p>
+          </div>
+
+          <div class="card-footer d-flex">
+            <blockquote class="blockquote mb-0">
+              <p>someone forgot the bookmark note🥀💔</p>
+              <footer class="blockquote-footer">Rails fault not <cite title="Source Title">Brian Augnoo</cite></footer>
+            </blockquote>
+
+            <%= button_to "Delete", bookmark,
+                method: :delete,
+                data: { turbo_confirm: "Don't kill me please!" },
+                class: "text-danger",
+                style: "text-decoration: none" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

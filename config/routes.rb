@@ -8,4 +8,5 @@ Rails.application.routes.draw do
     end
   end
   resources :bookmarks, only: [ :destroy ]
+  
 end

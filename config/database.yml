@@ -12,4 +12,7 @@ test:
   database: rails-watch-list_test
 
 production:
-  url: <%= ENV['DATABASE_URL'] %>
+  primary:
+    url: <%= ENV['DATABASE_URL'] %>
+  cable:
+    url: <%= ENV['DATABASE_URL'] %>

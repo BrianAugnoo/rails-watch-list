@@ -5,14 +5,13 @@ default: &default
 
 development:
   <<: *default
-  database: rails-watch-list_development
+  database: rails_watch-list_development
 
 test:
   <<: *default
   database: rails-watch-list_test
 
 production:
+production:
   <<: *default
-  database: rails_watch_list_production
-  username: rails_watch_list
-  password: <%= ENV["RAILS_WATCH_LIST_1941_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>

@@ -29,7 +29,7 @@ gem "faker"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
-gem "dotenv-rails"
+gem "cloudinary"
 gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
@@ -55,6 +55,8 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  gem "dotenv-rails"
 end
 
 group :development do

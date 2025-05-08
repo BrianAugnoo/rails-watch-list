@@ -5,14 +5,23 @@ default: &default
 
 development:
   <<: *default
-  database: rails-watch-list_development
+  database: rails_watch-list_development
 
 test:
   <<: *default
   database: rails-watch-list_test
 
+
 production:
-  <<: *default
-  database: rails_watch_list_production
-  username: rails_watch_list
-  password: <%= ENV["RAILS_WATCH_LIST_DATABASE_PASSWORD"] %>
+  primary:
+    <<: *default
+    url: <%= ENV['DATABASE_URL'] %>
+  cable:
+    <<: *default
+    url: <%= ENV['DATABASE_URL'] %>
+  queue:
+    <<: *default
+    url: <%= ENV['DATABASE_URL'] %>
+  cache:
+    <<: *default
+    url: <%= ENV['DATABASE_URL'] %>

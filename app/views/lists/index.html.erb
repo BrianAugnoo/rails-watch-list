@@ -10,9 +10,8 @@
 
   <div class="row mb-5 px-3">
     <% @lists.each do |list| %>
-      <% background_image = list.movies.size.positive? ? "url(#{list.movies[0][:poster_url]})" : "url(#{asset_path('cinema.jpg')})" %>
-
-      <div class="col-4 banner position-relative text-center mx-3" style="background-image: <%= background_image %>; display: flex; align-items: center; justify-content: center;">
+      <% url = list.photo.attached? ? cl_image_path(list.photo.key) : nil %>
+      <div class="col-4 banner position-relative text-center mx-3" style="background-image: url('<%= url unless url.nil? %>'); display: flex; align-items: center; justify-content: center;">
         <h2 class="banner-title"><%= link_to list[:name], list_path(list), class: "white-link" %></h2>
         <div class="position-absolute" style="bottom: 10px; right: 10px;">
           <%= button_to "Delete", list,

@@ -1,5 +1,4 @@
-<% background_image = @list.movies.size.positive? ? "url(#{@list.movies[0][:poster_url]})" : "url(#{asset_path('cinema.jpg')})" %>
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), <%= background_image%>">
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path(@list.photo.key) if @list.photo.attached?%>')">
   <h1><%= @list[:name]%></h1>
 </div>
 
